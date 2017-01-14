@@ -1,3 +1,3 @@
 # mom-alexa
 
-Alexa, but for emotionally distant parental figures
+Alexa, but for people with emotionally distant parental figures
