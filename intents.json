@@ -1,7 +1,7 @@
 {
   "intents":[
     {
-      "intents": "GetTraffic"
+      "intent": "GetTraffic"
     }
   ]
 }

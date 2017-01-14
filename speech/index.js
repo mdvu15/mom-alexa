@@ -64,7 +64,7 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "GetTraffic": function (intent, session, response) {
-        response.tellWithCard("Where do you think you are going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
+        response.tellWithCard("Where do you think you're going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
     }
 };
 
