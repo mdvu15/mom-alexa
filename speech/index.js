@@ -63,24 +63,44 @@ LoverMode.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest
 
 LoverMode.prototype.intentHandlers = {
     "GetTraffic": function (intent, session, response) {
-      response.tell("Where do you think you're going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
+      response.ask("Where do you think you're going? You are supposed to stay and love me forever","Hey, don't ignore me");
     },
     "GetWeather": function(intent, session, response) {
       handleWeatherIntent(session, response);
+    },
+    "Default" : function(intent, session, response) {
+      response.tell("Are you ignoring me?");
+    },
+    "AMAZON.StopIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tellWithCard(speechOutput, speechOutput, speechOutput);
+    },
+    "AMAZON.CancelIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tellWithCard(speechOutput, speechOutput, speechOutput);
     }
 };
 
 var handleWeatherIntent = function(session, response) {
   var speechOutput = {
-    speech: "<speak>Can't you feel it? It's hot as hell <break time=\"0.3s\"/> being with me.</speak>",
+    speech: "<speak>Can't you feel it? It's hoooot <break time=\"0.2s\"/> being with me.</speak>",
     type: AlexaSkill.speechOutputType.SSML
   };
   var repromptOutput = {
-    speech: "<speak>Honey, <break time=\"0.3s\"/> are you there?</speak>",
+    speech: "<speak>Honey, <break time=\"0.2s\"/> are you there?</speak>",
     type: AlexaSkill.speechOutputType.SSML
   };
   response.ask(speechOutput, repromptOutput);
 };
+
+/** var handleDefault = function(session, response) {
+  var speechOutput = {
+    speech: "<speak>OH <break strength=medium/> MY <break strength=medium/> GOD. Stop ignoring me. </speak>",
+    type: AlexaSkill.speechOutputType.SSML
+  };
+  var repromptOutput = "I'm off!";
+  response.tell(repromptOutput);
+}; */
 
 exports.handler = function (event, context) {
     // Create an instance of the HelloWorld skill.

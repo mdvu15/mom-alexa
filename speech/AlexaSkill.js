@@ -170,7 +170,7 @@ Response.prototype = (function () {
                 output: speechOutput,
                 cardTitle: cardTitle,
                 cardContent: cardContent,
-                shouldEndSession: false
+                shouldEndSession: true
             }));
         },
         ask: function (speechOutput, repromptSpeech) {
