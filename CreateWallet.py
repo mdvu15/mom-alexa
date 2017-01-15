@@ -15,3 +15,6 @@ alexa_wallet = create_wallet_from_address(wallet_name='alexa', address = alexa_a
 print(get_total_balance(alexa_address['address'], coin_symbol='bcy'))
 send_faucet_coins(address_to_fund=alexa_address['address'], satoshis=100000000, api_key='4bcc9dcc6bc449fc85cd525802b30fa2', coin_symbol='bcy')
 print(get_total_balance(alexa_address['address'], coin_symbol='bcy'))
+
+print(flan_address['address'])
+print(alexa_address['private'])
