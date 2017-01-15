@@ -161,7 +161,7 @@ Response.prototype = (function () {
             this._context.succeed(buildSpeechletResponse({
                 session: this._session,
                 output: speechOutput,
-                shouldEndSession: true
+                shouldEndSession: false
             }));
         },
         tellWithCard: function (speechOutput, cardTitle, cardContent) {
@@ -170,7 +170,7 @@ Response.prototype = (function () {
                 output: speechOutput,
                 cardTitle: cardTitle,
                 cardContent: cardContent,
-                shouldEndSession: true
+                shouldEndSession: false
             }));
         },
         ask: function (speechOutput, repromptSpeech) {

@@ -34,43 +34,52 @@ var AlexaSkill = require('./AlexaSkill');
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
-var HelloWorld = function () {
+var LoverMode = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
-HelloWorld.prototype = Object.create(AlexaSkill.prototype);
-HelloWorld.prototype.constructor = HelloWorld;
+LoverMode.prototype = Object.create(AlexaSkill.prototype);
+LoverMode.prototype.constructor = LoverMode;
 
-HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("HelloWorld onSessionStarted requestId: " + sessionStartedRequest.requestId
+LoverMode.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
+    console.log("LoverMode onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
-HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+LoverMode.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
+    console.log("LoverMode onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
     var speechOutput = "Entering desperate lover mode";
-    var repromptText = "Hi baby";
+    var repromptText = "Hi baby, are you there?";
     response.ask(speechOutput, repromptText);
 };
 
-HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("HelloWorld onSessionEnded requestId: " + sessionEndedRequest.requestId
+LoverMode.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
+    console.log("LoverMode onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
 
-HelloWorld.prototype.intentHandlers = {
-    // register custom intent handlers
+LoverMode.prototype.intentHandlers = {
     "GetTraffic": function (intent, session, response) {
-        response.tellWithCard("Where do you think you're going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
+      response.tell("Where do you think you're going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
+    },
+    "GetWeather": function(intent, session, response) {
+      var speechOutput = {
+        speech: "<speak>Can't you feel it? It's hot as hell <break time=\"0.3s\"/> being with me.</speak>",
+        type: AlexaSkill.speechOutputType.SSML
+      };
+      var repromptOutput = {
+        speech: "<speak>Honey, <break time=\"0.3s\"/> are you there?</speak>",
+        type: AlexaSkill.speechOutputType.SSML
+      };
+      response.ask(speechOutput, repromptOutput);
     }
 };
 
-// Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
     // Create an instance of the HelloWorld skill.
-    var helloWorld = new HelloWorld();
-    helloWorld.execute(event, context);
+    var loverMode = new LoverMode();
+    loverMode.execute(event, context);
 };

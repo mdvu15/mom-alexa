@@ -2,6 +2,9 @@
   "intents":[
     {
       "intent": "GetTraffic"
+    },
+    {
+      "intent": "GetWeather"
     }
   ]
 }

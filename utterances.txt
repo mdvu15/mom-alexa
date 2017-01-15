@@ -1,1 +1,4 @@
 GetTraffic how is the traffic today
+
+GetWeather what's the weather like
+GetWeather how's the weather
