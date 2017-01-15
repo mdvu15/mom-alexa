@@ -1,4 +1,11 @@
 GetTraffic how is the traffic today
+GetTraffic I'm heading to work. how is the traffic
+GetTraffic how long will it take me to get to work
+
 
 GetWeather what's the weather like
+GetWeather how's the weather today
 GetWeather how's the weather
+
+Default Yeah
+Default Whatever

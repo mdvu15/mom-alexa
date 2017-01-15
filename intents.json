@@ -5,6 +5,15 @@
     },
     {
       "intent": "GetWeather"
+    },
+    {
+      "intent": "Default"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
     }
   ]
 }
