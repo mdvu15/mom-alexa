@@ -66,16 +66,20 @@ LoverMode.prototype.intentHandlers = {
       response.tell("Where do you think you're going? You are supposed to stay and love me forever, forever, forever, forever, forever, forever");
     },
     "GetWeather": function(intent, session, response) {
-      var speechOutput = {
-        speech: "<speak>Can't you feel it? It's hot as hell <break time=\"0.3s\"/> being with me.</speak>",
-        type: AlexaSkill.speechOutputType.SSML
-      };
-      var repromptOutput = {
-        speech: "<speak>Honey, <break time=\"0.3s\"/> are you there?</speak>",
-        type: AlexaSkill.speechOutputType.SSML
-      };
-      response.ask(speechOutput, repromptOutput);
+      handleWeatherIntent(session, response);
     }
+};
+
+var handleWeatherIntent = function(session, response) {
+  var speechOutput = {
+    speech: "<speak>Can't you feel it? It's hot as hell <break time=\"0.3s\"/> being with me.</speak>",
+    type: AlexaSkill.speechOutputType.SSML
+  };
+  var repromptOutput = {
+    speech: "<speak>Honey, <break time=\"0.3s\"/> are you there?</speak>",
+    type: AlexaSkill.speechOutputType.SSML
+  };
+  response.ask(speechOutput, repromptOutput);
 };
 
 exports.handler = function (event, context) {
