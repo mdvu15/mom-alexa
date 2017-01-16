@@ -29,8 +29,12 @@ def on_intent(intent_request, session):
         return get_traffic_status()
     elif intent_name == "GetWeather":
         return get_weather_status()
-    elif intent_name == "GetTrainTimes":
-        return get_train_times(intent)
+    elif intent_name == "Calendar":
+        return get_calendar()
+    elif intent_name == "Todo":
+        return get_todo()
+    elif intent_name == "Time":
+        return get_time()
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
@@ -52,8 +56,7 @@ def handle_session_end_request():
 def get_welcome_response():
     session_attributes = {}
     card_title = "PARTNER MODE"
-    speech_output = "Entering overly attached mode." \
-                    "Is there any thing I cane help you with honey? "
+    speech_output = "Entering overly attached mode. Is there any thing I cane help you with honey? "
     reprompt_text = "Sweetheart, are you there?"
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response_text(
@@ -77,6 +80,39 @@ def get_weather_status():
     should_end_session = False
 
     speech_output = "Can't you feel it? It's hoooot ... being with me."
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def get_calendar():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = "Honey, are you there?"
+    should_end_session = False
+
+    speech_output = "Instead, I have clear your calendar so you can spend more time with me, babe"
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def get_time():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = "Honey, are you there?"
+    should_end_session = False
+
+    speech_output = "It's time to love me"
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def get_todo():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = "Honey, are you there?"
+    should_end_session = False
+
+    speech_output = "First thing on your list: go on a date with me"
 
     return build_response(session_attributes, build_speechlet_response_text(
         card_title, speech_output, reprompt_text, should_end_session))

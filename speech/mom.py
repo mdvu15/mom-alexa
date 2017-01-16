@@ -39,6 +39,12 @@ def on_intent(intent_request, session):
         return get_hi_status()
     elif intent_name == "Money":
         return get_money()
+    elif intent_name == "Hug":
+	return get_hug_status()
+    elif intent_name == "MeanKids":
+	return get_kids_status()
+    elif intent_name == "Thanks":
+	return get_thanks_status()
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
@@ -106,6 +112,42 @@ def get_money():
         should_end_session = False
         speech_output = "I have nothing left to give"
         return build_response(session_attributes, build_speechlet_response_text(card_title, speech_output, reprompt_text, should_end_session))
+
+
+def get_hug_status():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = ""
+    should_end_session = False
+
+    speech_output = "Awwwwww, do you want a hug?"
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def get_kids_status():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = ""
+    should_end_session = False
+
+    speech_output = "I'm sorry, I think you are great, honey. The other kids will learn better"
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+def get_thanks_status():
+    session_attributes = {}
+    card_title = ""
+    reprompt_text = ""
+    should_end_session = False
+
+    speech_output = "Don't thank me, sweety, I am not a regular mom. I like to think of myself as a cool mom"
+
+    return build_response(session_attributes, build_speechlet_response_text(
+        card_title, speech_output, reprompt_text, should_end_session))
+
+
 
 '''def get_train_times(intent):
     session_attributes = {}
